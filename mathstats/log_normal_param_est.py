@@ -301,10 +301,14 @@ def get_d_ML_Newton_Raphson(mu, sigma, r, c_min, observations, c_max, d_lower, d
 		g_d_denominator_x1 = calc_gd(x, mu, sigma, c_min, c_max, r, cutoff_approx_level)
 		# print(x, mu, sigma, r, c_min, observations, c_max, d_lower, d_upper, cutoff_approx_level)
 		g_prime_d_nominator_x1 = calc_g_prim_d(x, mu, sigma, c_min, c_max, r, cutoff_approx_level)
-		# try:
-		g_d_ratio_x1 = n*g_prime_d_nominator_x1/g_d_denominator_x1
-		# except ZeroDivisionError:
-		# 	x += 10
+		try:
+			g_d_ratio_x1 = n*g_prime_d_nominator_x1/g_d_denominator_x1
+		except ZeroDivisionError:
+			x_prime = x
+			print("This instance caused  ZeroDivisionError in get_d_ML_Newton_Raphson mathstats.")
+			print(x, mu, sigma, r, c_min, observations, c_max, d_lower, d_upper, cutoff_approx_level)
+			print("Setting gap to:", x_prime)
+			break
 
 		g_d_denominator_x2 = calc_gd(x+dx, mu, sigma, c_min, c_max, r, cutoff_approx_level)
 		g_prime_d_nominator_x2 = calc_g_prim_d(x+dx, mu, sigma, c_min, c_max, r, cutoff_approx_level)
