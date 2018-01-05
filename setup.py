@@ -1,9 +1,16 @@
-import os
 from setuptools import setup, find_packages
+from codecs import open
+from os import path
+
+here = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='mathstats',
-    version='0.2.6',
+    version='0.2.6.1',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -22,7 +29,7 @@ setup(
     author_email='kristoffer.sahlin@scilifelab.se',
     url='https://github.com/ksahlin/mathstats',
     license='GPLv3',
-    long_description=open(os.path.join(os.getcwdu(), 'README.md')).read(),
+    long_description=long_description,  # Optional,
     install_requires=['scipy>=0.9']
     #                  'networkx>=1.4'],
     #platforms=['Unix', 'Linux', 'Mac OS']
