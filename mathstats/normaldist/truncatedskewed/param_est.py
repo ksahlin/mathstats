@@ -71,7 +71,7 @@ def PreCalcMLvaluesOfdLongContigs(mean, stdDev, readLen):
     d_lower = int(-4 * stdDev)
     dValuesTable = {}
     prev_obs = d_lower
-    for d in xrange(d_lower, d_upper + 1):
+    for d in range(d_lower, d_upper + 1):
         #Aofd=CalcAofd(d)
         func_of_d, Aofd = funcDGeneral(d, mean, stdDev, mean + 4 * stdDev, mean + 4 * stdDev, readLen)
         obs = func_of_d #d+Aofd*stdDev**2
@@ -81,7 +81,7 @@ def PreCalcMLvaluesOfdLongContigs(mean, stdDev, readLen):
         #fill in missing values of the table here
         if abs(obs - prev_obs) > 1:
             n = abs(obs - prev_obs)
-            for i in xrange(0, n):
+            for i in range(0, n):
                 dValuesTable[prev_obs + i + 1] = d
 
         prev_obs = obs
