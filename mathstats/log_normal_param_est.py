@@ -255,7 +255,7 @@ def GapEstimator(mu, sigma, r, observations, c1_len, c2_len=None, method="NR", s
             d_ML = get_d_ML_linear_search(mu, sigma, r, c_min, observations, c_max, d_lower, d_upper, stepsize, cutoff_approx_level)
 
     else:
-        print "Wrong method specified, specify either 'NR' (preffered) or 'linear'. "
+        print("Wrong method specified, specify either 'NR' (preffered) or 'linear'. ")
         return None
 
     return d_ML
